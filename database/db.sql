@@ -38,8 +38,6 @@ CREATE TABLE project(
     date_finish_project VARCHAR(20) NOT NULL,
     description_project TEXT(500) NOT NULL,
     id_project_status INT(4) NOT NULL,
-    count_tasks INT(4),
-    task_complete INT(4),
     PRIMARY KEY(id_project),
     FOREIGN KEY(id_project_status) REFERENCES project_status(id_project_status)
 );
