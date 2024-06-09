@@ -9,7 +9,7 @@ exports.register = async(req,res)=>{
     try {
         const {name,lastName,email,password,profession,id_role}=req.body
         let passHash =await bcryptjs.hash(password, 10)
-        pool.query(`INSERT INTO users(name_user,lastname_user,email_user,password_user,profession_user,id_role) VALUES(?,?,?,?,?,?)`,[name,lastName,email,password,profession,id_role],(error,rows)=>{
+        pool.query(`INSERT INTO users(name_user,lastname_user,email_user,password_user,profession_user,id_role) VALUES(?,?,?,?,?,?)`,[name,lastName,email,passHash,profession,id_role],(error,rows)=>{
             if(error){
                 console.log('fatal error:' + error)
             }else{
