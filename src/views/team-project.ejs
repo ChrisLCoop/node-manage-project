@@ -1,0 +1,88 @@
+<%-  include('includes/header') %>
+            <div class="content-team-gen-all-dd">
+                <div class="content-gen-dash">
+                    <h2>Team Project</h2>
+                    <h3>Employee List</h3>
+                    <div class="control-project-fr">
+                        <table class="table-date">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Profession</th>
+                                    
+                                    <th scope="col">*</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% data.forEach(function(row) { %>
+                                    <tr>
+                                        <th><%= row.id_user %></th>
+                                        <td><%= row.name_user %></td>
+                                        <td><%= row.lastname_user %></td>
+                                        <td><%= row.profession %></td>
+                                        
+                                        <form action="/project/ad-re-team" method="POST">
+                                            <td>
+                                                <select name="option_tw" selected value id="">
+                                                    <option value="0" >Add to this project?</option>
+                                                    <option value="1">Remove from project</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" value="<%= idProject %>" name="id_project">
+                                                <input type="hidden" value="<%= row.id_user %>" name="id_user">
+                                                <button type="submit">Procesar</button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+    
+                </div>
+                <div class="content-list-employee">
+                    <h3>These Employees is in this Project</h3>
+                    <div class="frame-le-tbp">
+                        <table class="table-date">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Profession</th>
+                                    
+                                    <th scope="col">*</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% dato.forEach(function(list) { %>
+                                    <tr>
+                                        <th>00</th>
+                                        <td><%= list.name_user %></td>
+                                        <td><%= list.lastname_user %></td>
+                                        <td><%= list.profession %></td>
+                                        
+                                        <form action="" method="POST">
+                                            <td>
+                                                <select name="option_tw" selected value id="">
+                                                    
+                                                    <option value="1">Remove from project</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" value="<%= idProject %>" name="id_project">
+                                                <input type="hidden" value="<%= list.id_user %>" name="id_user">
+                                                <button type="submit">Procesar</button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+<%- include('includes/footer') %>

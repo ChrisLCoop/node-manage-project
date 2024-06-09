@@ -1,0 +1,36 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Project Summary</h2>
+                <div class="cont-info-project-a">
+                    <% data.forEach(function(row) { %>
+                        <p><%= row.name_project %></p><br>
+                        <p><%= row.date_initial_project %></p><br>
+                        <p><%= row.date_finish_project %></p><br>
+                        <p><%= row.description_project %></p><br>
+                        <p><%= row.name_project_status %></p><br>
+                    <% }); %>
+                    <p>Project Manager: <%= user.name_user %>, <%= user.lastname_user %></p><br>
+                </div>
+                <h2>Project Team</h2>
+                <div class="cont-info-project-a">
+                    <% dato.forEach(function(list) { %>
+                        <div class="cont-pr-tm-bs">
+                            <p><%= list.name_user %>, <%= list.lastname_user %></p><br>
+                            <p>Profession: <%= list.profession_user %></p><br>
+                        </div>
+                    <% }); %>
+                </div>
+                <div class="cont-res-ad-task">
+                    <h3>Admin Task</h3>
+                    <form action="/project/manage-task" method="POST">
+                        <input type="hidden" value="<%= idProject %>" name="id_project">
+                        <button type="submit">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="content-gen-dash-b">
+                <div class="cont-status-count-project">
+                    <p>XD</p>
+                </div>
+            </div>
+<%- include('includes/footer') %>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="content-pr-login">
+        <h1>Create Super User</h1>
+        <form action="/users/create-user-temp" method="post">
+            <input type="text" class="form-control" placeholder="Nombres" name="name"><br>
+            <input type="text" class="form-control" placeholder="Apellidos" name="lastName"><br>
+            <input type="text" class="form-control" placeholder="correo" name="email"><br>
+            <input type="password" class="form-control" placeholder="contraseña" name="password"><br>
+            <input type="hidden" name="id_role" value="1">
+            <button type="submit" class="btn btn-primary">Create</button><br>
+            
+        </form>
+        
+    </div>
+</body>
+</html>

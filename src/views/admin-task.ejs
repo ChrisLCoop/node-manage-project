@@ -1,0 +1,62 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Task Admin</h2>
+                <div class="control-project-fr">
+                    <table class="table-date">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Task Status</th>
+                                <th scope="col">Name Project</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">*</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <% data.forEach(function(row) { %>
+                                <tr>
+                                    <th><%= row.id_task %></th>
+                                    <td><%= row.name_task %></td>
+                                    <td><%= row.description_task %></td>
+                                    <td><%= row.name_task_status %></td>
+                                    <td><%= row.name_project %></td>
+                                    <form action="/project/option-task" method="POST">
+                                        <td>
+                                            <select name="op_task_val" selected value id="">
+                                                <option value="0" >Edit</option>
+                                                <option value="1">Delete</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" value="<%= row.id_task %>" name="id_task">
+                                            <button>Procesar</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="control-task-manager">
+                    <div class="cont-frame-ad-task-ct">
+                        <h3>New Task</h3>
+                        <form action="/project/new-task-creation" method="POST">
+                            <input type="hidden" value="<%= idProject %>" name="id_project">
+                            <button type="submit">Create T</button>
+                        </form>
+                    </div>
+                    <% if(user.id_role >=2){ %>
+                        <% } else{ %>
+                            <p>***The user is the only that create this option</p>
+                            <div class="cont-frame-ad-task-ct">
+                                <h3>New Task Status</h3>
+                                <a href="/project/create-task-status">Create TS</a>
+                            </div>
+                    <% } %>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

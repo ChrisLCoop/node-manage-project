@@ -1,0 +1,22 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>New Users</h2>
+                <div class="content-form">
+                    <form action="/users/create-user" method="post">
+                        <input type="text" class="form-control" placeholder="Nombres" name="name"><br>
+                        <input type="text" class="form-control" placeholder="Apellidos" name="lastName"><br>
+                        <input type="text" class="form-control" placeholder="correo" name="email"><br>
+                        <input type="password" class="form-control" placeholder="contraseña" name="password"><br>
+                        <label for="" class="form-label">Category</label>
+                        <select name="id_role" selected value id="">
+                            <% data.forEach(function(row) { %>
+                            <option value="<%= row.id_role %>"><%= row.name_role %></option>
+                            <% }); %>
+                        </select><br>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="" class="btn btn-primary">Cancel</button>
+                    </form>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

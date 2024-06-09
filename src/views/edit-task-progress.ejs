@@ -1,0 +1,21 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Eddit Task Progress</h2>
+                <div class="content-frame-np">
+                  <form action="/task/edit-task-progress" method="POST">
+                    <% data.forEach(function(row) { %>
+                      <input type="text" value="<%= row.title_task_progress %>" placeholder="Name Task " name="nameTaskPro"><br>
+                      <input type="date" value="<%= row.date_initial_task_progress %>" placeholder="Date Initial" name="dateInitial"><br>
+                      <input type="time" value="<%= row.h_start_task_progress %>" placeholder="Hour Initial" name="timeInitial"><br>
+                      <input type="date" value="<%= row.date_finish_task_progress %>" placeholder="Date Finish" name="dateFinish"><br>
+                      <input type="time" value="<%= row.h_finish_task_progress %>" placeholder="Hour Finish" name="timeFinish"><br>
+                      <textarea name="description" id=""><%= row.description_task_progress %></textarea><br>
+                      <input type="hidden" value="<%= row.id_task_progress %>" name="id_task_progress">
+                      <button type="submit">SAVE</button>
+                    <% }); %>
+                    
+                  </form>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

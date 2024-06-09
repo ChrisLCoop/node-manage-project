@@ -1,0 +1,39 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Category Users</h2>
+                <a href="/users/new-role-user">New Role</a>
+                <div class="content-list-category-user">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Accion</th>
+                            <th scope="col">.</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                          <% data.forEach(function(row) { %>
+                            <tr>
+                              <td><%= row.name_role %></td>
+                              <form action="" method="post">
+                                <td>
+                                  <select name="option_user" selected value id="">
+                                      <option value="0">Accion</option>
+                                      <option value="1">Editar</option>
+                                      <option value="2">Eliminar</option>
+                                  </select>
+                                  <input type="hidden" value="<%= row.id_role %>" name="id_role">
+                                </td>
+                                <td>
+                                  <button type="submit" class="btn btn-primary">Procesar</button>
+                                </td>
+                              </form>
+                            </tr>
+                          <% }); %>
+                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

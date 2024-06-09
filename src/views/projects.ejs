@@ -1,0 +1,71 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Proyectos</h2>
+                <h3>Lista de Proyectos</h3>
+                <div class="control-project-fr">
+                    <table class="table-date">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre Proyecto</th>
+                                <th scope="col">Fecha Inicio</th>
+                                <th scope="col">Fecha Fin</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">acciones</th>
+                                <th scope="col">*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(function(row) { %>
+                                <tr>
+                                    <th><%= row.id_project %></th>
+                                    <td><%= row.name_project %></td>
+                                    <td><%= row.date_initial_project %></td>
+                                    <td><%= row.date_finish_project %></td>
+                                    <td><%= row.name_project_status %></td>
+                                    <% if(user.id_role >=3){ %>
+                                    <% } else{ %>
+                                        <form action="/project/option-project" method="POST">
+                                            <td>
+                                                <select name="project_action" selected value id="">
+                                                    <option value="0" >Añadir Equipo</option>
+                                                    <option value="1">Resumen Proyecto</option>
+                                                    <option value="2">Editar</option>
+                                                    <option value="3">Eliminar</option>
+                                                    <option value="4">Mark as "Pending"</option>
+                                                    <option value="5">Mark as "In Process"</option>
+                                                    <option value="6">Mark as "Finished"</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" value="<%= row.id_project %>" name="id_project">
+                                                <button>Procesar</button>
+                                            </td>
+                                        </form>
+                                    <% } %>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-gen-dash-b">
+                <% if(user.id_role >=3){ %>
+
+                <% } else{ %>
+                    <div class="cont-status-count-project">
+                        <a href="/project/new-project">Crear Proyecto</a>
+                        
+                    </div>
+                <% } %>
+                <% if(user.id_role >=2){ %>
+
+                    <% } else{ %>
+                        <div class="cont-status-count-project">
+                            <p>***The Admin is the only can create this option</p>
+                            <a href="/project/project-status">Crear Estado de Proyecto</a>
+                        </div>
+                    <% } %>
+                
+            </div>
+<%- include('includes/footer') %>

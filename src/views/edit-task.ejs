@@ -1,0 +1,16 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Edit Task </h2>
+                <div class="content-frame-np">
+                  <form action="/project/update-task" method="POST">
+                    <% data.forEach(function(row){ %>
+                      <input type="text" value="<%= row.name_task %>" placeholder="Name Task" name="nameTask"><br>
+                    <textarea name="description" id=""><%= row.description_task %></textarea><br>
+                    <input type="hidden" value="<%= row.id_task %>" name="id_task">
+                    <button type="submit">update</button>
+                    <% }); %>
+                  </form>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

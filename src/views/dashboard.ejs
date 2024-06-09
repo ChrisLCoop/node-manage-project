@@ -1,0 +1,81 @@
+<%-  include('includes/header') %>
+            <div class="cont-frame-dp-dash">
+                <div class="cont-regin-dash">
+                    <div class="content-gen-dash">
+                        <h2>Dashboard</h2>
+                        <h3>informe general</h3>
+                        <div class="control-project-fr">
+                            <table class="table-date">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre Proyecto</th>
+                                        
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">*</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.forEach(function(row) { %>
+                                        <tr>
+                                            <th><%= row.id_project %></th>
+                                            <td><%= row.name_project %></td>
+                                            
+                                            <td><%= row.name_project_status %></td>
+                                            <td>ver</td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="content-gen-dash-b">
+                        <div class="cont-status-count-project">
+                            <div class="frame-info-ddt">
+                                <h3>Total Proyectos</h3>
+                                
+                                <span><%= countP %></span>
+                            </div>
+                            <div class="frame-info-ddt">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                        <div class="cont-status-count-project">
+                            <div class="frame-info-ddt">
+                                <h3>Total Tareas</h3>
+                                <span><%= countTa %></span>
+                            </div>
+                            <div class="frame-info-ddt">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont-regin-dash">
+                    <div class="content-result-data-dash">
+                        <h2>datos-avance projecto</h2>
+                        <table class="table-date">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre Proyecto</th>
+                                    <th scope="col">Progreso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% estak.forEach(function(std) { %>
+                                    <tr>
+                                        <th><%= std.name_project %></th>
+                                        <% if(std.TOTAL_TASK == 0){ %>
+                                            <td>No tiene ninguna tarea</td>
+                                        <% } else { %>
+                                            <td><progress max="100" value="<%= ((std.TASK_COMPLETE * 100)/ std.TOTAL_TASK ) %>"></progress><%= (((std.TASK_COMPLETE * 100)/ std.TOTAL_TASK )).toFixed(1) %>%</td>
+                                        <% } %>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

@@ -1,0 +1,19 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>New Task </h2>
+                <div class="content-frame-np">
+                  <form action="/project/new-task" method="POST">
+                    <input type="text" placeholder="Name Task" name="nameTask"><br>
+                    <textarea name="description" id=""></textarea><br>
+                    <select name="id_task_status" selected value>
+                      <% data.forEach(function(row) { %>
+                      <option value="<%= row.id_task_status %>"><%= row.name_task_status %></option>
+                      <% }); %>
+                    </select><br><br>
+                    <input type="hidden" value="<%= idProject %>" name="id_project">
+                    <button type="submit">create</button>
+                  </form>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

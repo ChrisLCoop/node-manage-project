@@ -1,0 +1,19 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Add Task Progress</h2>
+                <div class="content-frame-np">
+                  <form action="/task/new-task-progress" method="POST">
+                    <input type="text" placeholder="Name Task " name="nameTaskPro"><br>
+                    <input type="date" placeholder="Date Initial" name="dateInitial"><br>
+                    <input type="time" placeholder="Hour Initial" name="timeInitial"><br>
+                    <input type="date" placeholder="Date Finish" name="dateFinish"><br>
+                    <input type="time" placeholder="Hour Finish" name="timeFinish"><br>
+                    <textarea name="description" id=""></textarea><br>
+                    <input type="hidden" value="<%= user.id_user %>" name="id_user">
+                    <input type="hidden" value="<%= idTask %>" name="id_task">
+                    <button type="submit">create</button>
+                  </form>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

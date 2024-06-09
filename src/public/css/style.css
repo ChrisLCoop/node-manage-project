@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+/*------login----*/
+
+.content-pr-login{
+    display: flex;
+    height: 100vh;
+    width: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*------*/
+
+.content-header{
+    font-size: 1.6rem;
+    background-color: brown;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 20%;
+}
+
+.cont-logo{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.content-header ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo-cg{
+    width: 15rem;
+    
+}
+
+.cont-group-ul{
+    display: flex;
+    justify-content: center;
+}
+
+.group-li{
+    list-style: none;
+}
+
+.group-li li{
+    padding: 1rem 0;
+}
+
+/*---header--top----*/
+
+.content-header-top{
+    position: fixed;
+    top: 0;
+    left: 20%;
+    height: 10rem;
+    background-color: green;
+    width: 80%;
+    font-size: 1.6rem;
+}
+
+.cont-gen-tb{
+    display: flex;
+    
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cont-btn-hbg{
+    display: flex;
+    align-items: center;
+}
+
+.menu-header{
+    width: 3rem;
+}
+
+.cont-info-user{
+    display: flex;
+    align-items: center;
+    width: 35%;
+    justify-content: space-around;
+    
+}
+
+.avatar-user{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+}
+
+.icon-info-user{
+    width: 2rem;
+    
+}
+
+/*---------main------*/
+
+.content-main{
+    padding-left: 20%;
+    padding-top: 10rem;
+    display: flex;
+    font-size: 1.6rem;
+}
+
+.content-gen-dash{
+    flex: 55%;
+}
+
+.content-gen-dash-b{
+    flex: 25%;
+}
+
+.table-date{
+    width: 100%;
+    background-color: antiquewhite;
+    padding: 1rem;
+}
+
+/*---edit-user---*/
+
+.avatar-user-fr{
+    width: 10rem;
+    height: 10rem;
+    
+}
+
+
+/*--footer----*/
+
+.content-footer{
+    padding-left: 20%;
+    height: 6rem;
+    width: 100%;
+    background: rgb(11,9,121);
+    background: linear-gradient(340deg, rgba(11,9,121,1) 23%, rgba(0,212,255,1) 51%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+}

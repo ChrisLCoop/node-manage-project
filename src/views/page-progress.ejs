@@ -1,0 +1,57 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>All Progress</h2>
+                <h3>--</h3>
+                <div class="control-project-fr">
+                    <table class="table-date">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Dia de Inicio</th>
+                                <th scope="col">hora de Inicio</th>
+                                <th scope="col">Dia Final</th>
+                                <th scope="col">Hora final</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Realizado por:</th>
+                                <% if(user.id_role >=3){ %>
+                                <% } else{ %>
+                                    <th scope="col">acciones</th>
+                                    <th scope="col">*</th>
+                                <% } %>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(function(row) { %>
+                                <tr>
+                                    <th><%= row.id_task_progress %></th>
+                                    <td><%= row.title_task_progress %></td>
+                                    <td><%= row.date_initial_task_progress %></td>
+                                    <td><%= row.h_start_task_progress %></td>
+                                    <td><%= row.date_finish_task_progress %></td>
+                                    <td><%= row.h_finish_task_progress %></td>
+                                    <td><%= row.description_task_progress %></td>
+                                    <td><%= row.name_user %></td>
+                                    <% if(user.id_role >=3){ %>
+                                    <% } else{ %>
+                                        <form action="/task/ed-de-task-progress" method="POST">
+                                            <td>
+                                                <select name="option_task_progress" selected value id="">
+                                                    <option value="0" >Eddit</option>
+                                                    <option value="1">Delete</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" value="<%= row.id_task_progress %>" name="id_task_progress">
+                                                <button>Procesar</button>
+                                            </td>
+                                        </form>
+                                    <% } %>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>

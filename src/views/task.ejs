@@ -1,0 +1,66 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Task</h2>
+                <h3>Lista de tareas</h3>
+                <div class="control-project-fr">
+                    <table class="table-date">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Proyecto</th>
+                                <th scope="col">Tarea</th>
+                                <th scope="col">Estado de la Tarea</th>
+                                <th scope="col">acciones</th>
+                                <th scope="col">*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(function(row) { %>
+                                <tr>
+                                    <th><%= row.id_project %></th>
+                                    <td><%= row.name_project %></td>
+                                    <td><%= row.name_task %></td>
+                                    <td><%= row.name_task_status %></td>
+                                    <form action="/task/option-task" method="POST">
+                                        <td>
+                                            <select name="option_task_s" selected value id="">
+                                                <option value="0" >Add Progress</option>
+                                                <option value="1">Mark as "In Process"</option>
+                                                <option value="2">Mark as "Finished"</option>
+                                                <option value="3">Mark as "Pending"</option>
+                                                <option value="4">View All "Progress"</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" value="<%= row.id_task %>" name="id_task">
+                                            <button>Procesar</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--
+            <div class="content-gen-dash-b">
+                <div class="cont-status-count-project">
+                    <div class="frame-info-ddt">
+                        <h3>Total Tareas</h3>
+                        <span>21</span>
+                    </div>
+                    <div class="frame-info-ddt">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="cont-status-count-project">
+                    <div class="frame-info-ddt">
+                        <h3>Total Tareas Completadas</h3>
+                        <span>50</span>
+                    </div>
+                    <div class="frame-info-ddt">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>-->
+<%- include('includes/footer') %>

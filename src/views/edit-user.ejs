@@ -1,0 +1,37 @@
+<%-  include('includes/header') %>
+            <div class="content-gen-dash">
+                <h2>Edit User</h2>
+                <div class="content-form">
+                    <h3>Edit Info</h3>
+                    <form action="/users/edit-info-user" method="post">
+                        <% data.forEach(function(row) { %>
+                        <input type="text" class="form-control" value="<%= row.name_user %>" placeholder="Nombres" name="name"><br>
+                        <input type="text" class="form-control" value="<%= row.lastname_user %>" placeholder="Apellidos" name="lastName"><br>
+                        <input type="text" class="form-control" value="<%= row.email_user %>" placeholder="correo" name="email"><br>
+                        
+                        <input type="hidden" value="<%= row.id_user %>" name="id_user">
+                        <% }); %>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="" class="btn btn-primary">Cancel</button>
+                    </form>
+                </div>
+                <div class="change-avatar">
+                    <h3>Edit Avatar</h3>
+                    <form action="/users/update-avatar-user" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image">
+                        <button type="submit">Change</button>
+                        <!--
+                        <img src="/uploads/1717306231823-kevin-casanada-comp-test7.jpg" alt="">-->
+                    </form>
+                    <div class="content-picture-avatar">
+                        <% if(avt==null) { %>
+                            <img class="avatar-user-fr" src="/img/avatar-default.jpg" alt="">
+                        <% } else{ %>
+                            <img class="avatar-user-fr" src="<%= avt %>" alt="">
+                        <% } %>
+                        
+                    </div>
+                </div>
+            </div>
+            
+<%- include('includes/footer') %>
