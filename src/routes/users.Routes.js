@@ -23,7 +23,7 @@ router.post('/edit-info-user',authController.isAuthenticated,usersController.edi
 router.post('/update-avatar-user',authController.isAuthenticated,uploadfile(),usersController.editAvatarProfileuser)
 
 //creation super user
-router.get('/role-temp',usersController.userRoleTemp)
-router.post('/create-user-temp',authController.register)
+//router.get('/role-temp',usersController.userRoleTemp)
+//router.post('/create-user-temp',authController.register)
 
 module.exports = router;
