@@ -7,10 +7,9 @@ require('dotenv').config()
 
 exports.register = async(req,res)=>{
     try {
-        const {name,lastName,email,password,id_role}=req.body
-        console.log(name,lastName,email,password,id_role)
+        const {name,lastName,email,password,profession,id_role}=req.body
         let passHash =await bcryptjs.hash(password, 10)
-        pool.query(`INSERT INTO users(name_user,lastname_user,email_user,password_user,id_role) VALUES(?,?,?,?,?)`,[name,lastName,email,passHash,id_role],(error,rows)=>{
+        pool.query(`INSERT INTO users(name_user,lastname_user,email_user,password_user,profession_user,id_role) VALUES(?,?,?,?,?,?)`,[name,lastName,email,password,profession,id_role],(error,rows)=>{
             if(error){
                 console.log('fatal error:' + error)
             }else{
