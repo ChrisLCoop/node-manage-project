@@ -1,19 +1,25 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
-                <h2>New Project</h2>
+                <h2 class="tt-add-task">New Project</h2>
                 <div class="content-frame-np">
-                  <form action="/project/create-new-project" method="POST">
-                    <input type="text" placeholder="Name Project" name="nameProject"><br>
-                    <input type="date" placeholder="Date Initial" name="dateInitial"><br>
-                    <input type="date" placeholder="Date Finish" name="dateFinish"><br>
-                    <textarea name="description" id=""></textarea><br>
+                  <form class="form-add-tsk" action="/project/create-new-project" method="POST">
+                    <input type="text" placeholder="Name Project" name="nameProject" required>
+                    <label class="label-addtsk" for="">Initial Date</label>
+                    <input type="date" placeholder="Date Initial" name="dateInitial" required>
+                    <label class="label-addtsk" for="">Finished Date</label>
+                    <input type="date" placeholder="Date Finish" name="dateFinish" required>
+                    <label class="label-addtsk" for="">Description</label>
+                    <textarea name="description" id="" required></textarea>
+                    <label class="label-addtsk" for="">Status Project</label>
                     <select name="id_project_status" selected value>
                       <% data.forEach(function(row) { %>
                       <option value="<%= row.id_project_status %>"><%= row.name_project_status %></option>
                       <% }); %>
-                    </select><br><br>
+                    </select>
                     <input type="hidden" value="<%= user.id_user %>" name="id_user">
-                    <button type="submit">create</button>
+                    <div class="ctn-btn-dd">
+                      <button class="btn-add-task" type="submit">create</button>
+                    </div>
                   </form>
                 </div>
                 

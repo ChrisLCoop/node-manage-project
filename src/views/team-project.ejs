@@ -7,7 +7,7 @@
                         <table class="table-date">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">#id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Profession</th>
@@ -21,13 +21,13 @@
                                         <th><%= row.id_user %></th>
                                         <td><%= row.name_user %></td>
                                         <td><%= row.lastname_user %></td>
-                                        <td><%= row.profession %></td>
+                                        <td><%= row.profession_user %></td>
                                         
                                         <form action="/project/ad-re-team" method="POST">
                                             <td>
                                                 <select name="option_tw" selected value id="">
                                                     <option value="0" >Add to this project?</option>
-                                                    <option value="1">Remove from project</option>
+                                                    
                                                 </select>
                                             </td>
                                             <td>
@@ -41,7 +41,6 @@
                             </tbody>
                         </table>
                     </div>
-    
                 </div>
                 <div class="content-list-employee">
                     <h3>These Employees is in this Project</h3>
@@ -49,27 +48,24 @@
                         <table class="table-date">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">#id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Profession</th>
-                                    
                                     <th scope="col">*</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% dato.forEach(function(list) { %>
                                     <tr>
-                                        <th>00</th>
+                                        <th><%= list.id_user %></th>
                                         <td><%= list.name_user %></td>
                                         <td><%= list.lastname_user %></td>
-                                        <td><%= list.profession %></td>
-                                        
-                                        <form action="" method="POST">
+                                        <td><%= list.profession_user %></td>
+                                        <form action="/project/remove-team-of-project" method="POST">
                                             <td>
                                                 <select name="option_tw" selected value id="">
-                                                    
-                                                    <option value="1">Remove from project</option>
+                                                    <option value="0">Remove from project</option>
                                                 </select>
                                             </td>
                                             <td>

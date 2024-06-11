@@ -19,5 +19,6 @@ router.post('/new-task',authController.isAuthenticated,proyectoController.newTas
 router.post('/update-project',authController.isAuthenticated,proyectoController.updateProject)
 router.post('/option-task',authController.isAuthenticated,proyectoController.optionTask)
 router.post('/update-task',authController.isAuthenticated,proyectoController.updateTask)
+router.post('/remove-team-of-project',authController.isAuthenticated,proyectoController.removeTeam)
 
 module.exports = router;

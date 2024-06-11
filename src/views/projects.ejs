@@ -1,17 +1,17 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
-                <h2>Proyectos</h2>
-                <h3>Lista de Proyectos</h3>
+                <h2>Project</h2>
+                <h3>Project List</h3>
                 <div class="control-project-fr">
                     <table class="table-date">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre Proyecto</th>
-                                <th scope="col">Fecha Inicio</th>
-                                <th scope="col">Fecha Fin</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">acciones</th>
+                                <th scope="col">Name Project</th>
+                                <th scope="col">Initial Date</th>
+                                <th scope="col">Finished Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
                                 <th scope="col">*</th>
                             </tr>
                         </thead>
@@ -28,10 +28,10 @@
                                         <form action="/project/option-project" method="POST">
                                             <td>
                                                 <select name="project_action" selected value id="">
-                                                    <option value="0" >Añadir Equipo</option>
-                                                    <option value="1">Resumen Proyecto</option>
-                                                    <option value="2">Editar</option>
-                                                    <option value="3">Eliminar</option>
+                                                    <option value="0" >Add Team</option>
+                                                    <option value="1">Project Summary</option>
+                                                    <option value="2">Edit</option>
+                                                    <option value="3">Delete</option>
                                                     <option value="4">Mark as "Pending"</option>
                                                     <option value="5">Mark as "In Process"</option>
                                                     <option value="6">Mark as "Finished"</option>
@@ -39,7 +39,7 @@
                                             </td>
                                             <td>
                                                 <input type="hidden" value="<%= row.id_project %>" name="id_project">
-                                                <button>Procesar</button>
+                                                <button>Process</button>
                                             </td>
                                         </form>
                                     <% } %>
@@ -49,22 +49,24 @@
                     </table>
                 </div>
             </div>
-            <div class="content-gen-dash-b">
+            <div class="content-gen-dash-b ctggt">
                 <% if(user.id_role >=3){ %>
 
                 <% } else{ %>
-                    <div class="cont-status-count-project">
-                        <a href="/project/new-project">Crear Proyecto</a>
+                    <div class="cont-status-count-project cont-pro-page-init">
+                        <a href="/project/new-project">Create Project</a>
                         
                     </div>
                 <% } %>
                 <% if(user.id_role >=2){ %>
 
                     <% } else{ %>
-                        <div class="cont-status-count-project">
+                        <div class="cont-status-count-project cont-pro-page-init">
                             <p>***The Admin is the only can create this option</p>
-                            <a href="/project/project-status">Crear Estado de Proyecto</a>
+                            <a href="/project/project-status">Create Project Status</a>
+                            <a href="/project/create-task-status">Create Task Status</a>
                         </div>
+                        
                     <% } %>
                 
             </div>

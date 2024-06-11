@@ -2,21 +2,23 @@
             <div class="content-gen-dash">
                 <h2>Project Summary</h2>
                 <div class="cont-info-project-a">
+                    <h3>Project Info</h3>
                     <% data.forEach(function(row) { %>
-                        <p><%= row.name_project %></p><br>
-                        <p><%= row.date_initial_project %></p><br>
-                        <p><%= row.date_finish_project %></p><br>
-                        <p><%= row.description_project %></p><br>
-                        <p><%= row.name_project_status %></p><br>
+                        <p><strong>Name Project:</strong> <%= row.name_project %></p><br>
+                        <p><strong>Initial Date:</strong> <%= row.date_initial_project %></p><br>
+                        <p><strong>Finish Date:</strong> <%= row.date_finish_project %></p><br>
+                        <p><strong>Description Project:</strong> <%= row.description_project %></p><br>
+                        <p><strong>Status Project:</strong> <%= row.name_project_status %></p><br>
                     <% }); %>
-                    <p>Project Manager: <%= user.name_user %>, <%= user.lastname_user %></p><br>
+                    <p><strong>Project Manager:</strong> <%= user.name_user %>, <%= user.lastname_user %></p><br>
                 </div>
-                <h2>Project Team</h2>
+                
                 <div class="cont-info-project-a">
+                    <h3>Project Team</h3>
                     <% dato.forEach(function(list) { %>
                         <div class="cont-pr-tm-bs">
-                            <p><%= list.name_user %>, <%= list.lastname_user %></p><br>
-                            <p>Profession: <%= list.profession_user %></p><br>
+                            <p><strong>Name Employee:</strong> <%= list.name_user %>, <%= list.lastname_user %></p><br>
+                            <p><strong>Profession:</strong> <%= list.profession_user %></p><br>
                         </div>
                     <% }); %>
                 </div>
@@ -24,13 +26,9 @@
                     <h3>Admin Task</h3>
                     <form action="/project/manage-task" method="POST">
                         <input type="hidden" value="<%= idProject %>" name="id_project">
-                        <button type="submit">Go</button>
+                        <button class="btn-psumm" type="submit">Go</button>
                     </form>
                 </div>
             </div>
-            <div class="content-gen-dash-b">
-                <div class="cont-status-count-project">
-                    <p>XD</p>
-                </div>
-            </div>
+            
 <%- include('includes/footer') %>

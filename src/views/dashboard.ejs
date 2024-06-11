@@ -3,15 +3,14 @@
                 <div class="cont-regin-dash">
                     <div class="content-gen-dash">
                         <h2>Dashboard</h2>
-                        <h3>informe general</h3>
+                        <h3>General Info</h3>
                         <div class="control-project-fr">
                             <table class="table-date">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre Proyecto</th>
-                                        
-                                        <th scope="col">Estado</th>
+                                        <th scope="col">#id</th>
+                                        <th scope="col">Name Project</th>
+                                        <th scope="col">Status Project</th>
                                         <th scope="col">*</th>
                                     </tr>
                                 </thead>
@@ -22,7 +21,7 @@
                                             <td><%= row.name_project %></td>
                                             
                                             <td><%= row.name_project_status %></td>
-                                            <td>ver</td>
+                                            <td></td>
                                         </tr>
                                     <% }); %>
                                 </tbody>
@@ -32,33 +31,33 @@
                     <div class="content-gen-dash-b">
                         <div class="cont-status-count-project">
                             <div class="frame-info-ddt">
-                                <h3>Total Proyectos</h3>
+                                <h3>All Project</h3>
                                 
                                 <span><%= countP %></span>
                             </div>
                             <div class="frame-info-ddt">
-                                <img src="" alt="">
+                                <img class="icon-page" src="/icon/layer_interface_icon.png" alt="">
                             </div>
                         </div>
                         <div class="cont-status-count-project">
                             <div class="frame-info-ddt">
-                                <h3>Total Tareas</h3>
+                                <h3>All Task</h3>
                                 <span><%= countTa %></span>
                             </div>
                             <div class="frame-info-ddt">
-                                <img src="" alt="">
+                                <img class="icon-page" src="/icon/list_task_tasklist_checklist_icon.png" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="cont-regin-dash">
+                <div class="cont-regin-dash-b">
                     <div class="content-result-data-dash">
-                        <h2>datos-avance projecto</h2>
+                        <h2>Info Task Progress</h2>
                         <table class="table-date">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nombre Proyecto</th>
-                                    <th scope="col">Progreso</th>
+                                    <th scope="col">Name Project</th>
+                                    <th scope="col">Progress</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +65,7 @@
                                     <tr>
                                         <th><%= std.name_project %></th>
                                         <% if(std.TOTAL_TASK == 0){ %>
-                                            <td>No tiene ninguna tarea</td>
+                                            <td>Has no Task</td>
                                         <% } else { %>
                                             <td><progress max="100" value="<%= ((std.TASK_COMPLETE * 100)/ std.TOTAL_TASK ) %>"></progress><%= (((std.TASK_COMPLETE * 100)/ std.TOTAL_TASK )).toFixed(1) %>%</td>
                                         <% } %>

@@ -6,7 +6,17 @@ class UserController{
 
     }
     general(req,res){
-        res.render('users',{user:req.user})
+        try {
+            pool.query(`SELECT * FROM users JOIN roles ON roles.id_role = users.id_role`,(error,rows)=>{
+                if(error){
+                    console.log(error)
+                }else{
+                    res.render('users',{user:req.user,data:rows})
+                }
+            })
+        } catch (error) {
+            
+        }
     }
     pagenewuser(req,res){
         try {

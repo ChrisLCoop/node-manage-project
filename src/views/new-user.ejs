@@ -3,12 +3,13 @@
                 <h2>New Users</h2>
                 <div class="content-form">
                     <form action="/users/create-user" method="post">
-                        <input type="text" class="form-control" placeholder="Nombres" name="name"><br>
-                        <input type="text" class="form-control" placeholder="Apellidos" name="lastName"><br>
-                        <input type="text" class="form-control" placeholder="correo" name="email"><br>
-                        <input type="password" class="form-control" placeholder="contraseña" name="password"><br>
+                        <input type="text" class="form-control" placeholder="Nombres" name="name" required><br>
+                        <input type="text" class="form-control" placeholder="Apellidos" name="lastName" required><br>
+                        <input type="text" class="form-control" placeholder="correo" name="email" required><br>
+                        <input type="password" class="form-control" placeholder="contraseña" name="password" required><br>
+                        <input type="text" class="form-control" placeholder="profession" name="profession" required><br>
                         <label for="" class="form-label">Category</label>
-                        <select name="id_role" selected value id="">
+                        <select name="id_role" selected value id="" required>
                             <% data.forEach(function(row) { %>
                             <option value="<%= row.id_role %>"><%= row.name_role %></option>
                             <% }); %>

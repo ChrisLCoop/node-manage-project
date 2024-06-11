@@ -6,32 +6,34 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="body">
     <header>
-        <div class="content-header">
+        <div class="content-header" id="headerLeft">
+            
             <div class="cont-logo">
                 <a href=""><img class="logo-cg" src="/img/lwn-logo.png" alt="logo-chris-global"></a>
             </div>
             <div class="cont-group-ul">
                 <ul class="group-li">
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/project">Proyectos</a></li>
-                    <li><a href="/task">Tareas</a></li>
+                    <li><a href="/project">Projects</a></li>
+                    <li><a href="/task">Tasks</a></li>
                     <% if(user.id_role >= 3){ %>
                     <% } else{ %>
-                        <li><a href="/report">Informes</a></li>
+                        <li><a href="/report">Reports</a></li>
                     <% } %>
                     <% if(user.id_role >= 2){ %>
                     <% } else{ %>
-                        <li><a href="/users">Usuarios</a></li>
+                        <li><a href="/users">Users</a></li>
                     <% } %>
+                    <button id="close-menu"><img class="menu-header" src="/icon/cross-icon.png" alt=""></button>
                 </ul>
             </div>
         </div>
         <div class="content-header-top">
             <div class="cont-gen-tb">
                 <div class="cont-btn-hbg">
-                    <button><img class="menu-header" src="/icon/menu-icon.png" alt=""></button>
+                    <button class="btn-menu-ham" id="icon-menu"><img class="menu-header" src="/icon/menu-icon.png" alt="menu-hamburguer"></button>
                     <!--<span>Super Usuario</span>-->
                 </div>
                 <div class="cont-info-user">
@@ -42,10 +44,11 @@
                     <% } %>
                     <p><%= user.name_user %> <%= user.lastname_user %></p>
                     <a href="/users/edit-user"><img class="icon-info-user" src="/icon/user-icon.png" alt=""></a>
-                    <a href="/users/logout">Salir</a>
+                    <a class="logout-enlace" href="/users/logout">Salir</a>
                 </div>
             </div>
         </div>
     </header>
-    <main>
-        <div class="content-main">
+    <main class="main">
+        <div class="gen-main">
+            <div class="content-main">

@@ -1,40 +1,44 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
                 <h2>Users</h2>
-                <h3>Lista de Usuarios</h3>
+                <h3>Users List</h3>
                 <div class="control-project-fr">
                     <table class="table-date">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">correo</th>
-                                <th scope="col">rol</th>
-                                <th scope="col">acciones</th>
+                                <th scope="col">Nam</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col">Actions</th>
                                 <th scope="col">*</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>1</th>
-                                <td>Carlitos</td>
-                                <td>carlitos@gmail.com</td>
-                                <td>Jefe de proyecto</td>
-                                <form action="">
-                                    <td>
-                                        <select name="accion_proyecto" selected value id="">
-                                            <option value="0" >Añadir Equipo</option>
-                                            <option value="1">Resumen Proyecto</option>
-                                            <option value="2">Editar</option>
-                                            <option value="3">Eliminar</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <button>Procesar</button>
-                                    </td>
-                                </form>
-                                
-                            </tr>
+                            <% data.forEach(function(row){ %>
+                                <tr>
+                                    <th><%= row.id_user %></th>
+                                    <td><%= row.name_user %></td>
+                                    <td><%= row.lastname_user %></td>
+                                    <td><%= row.email_user %></td>
+                                    <td><%= row.name_role %></td>
+                                    <td><%= row.profession_user %></td>
+                                    <form action="">
+                                        <td>
+                                            <select name="options_user" selected value id="">
+                                                <option value="0" >Delete</option>
+                                                
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" value="<%= row.id_user %>" name="id_user">
+                                            <button>Process</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>

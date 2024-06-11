@@ -45,7 +45,7 @@
                         <h3>New Task</h3>
                         <form action="/project/new-task-creation" method="POST">
                             <input type="hidden" value="<%= idProject %>" name="id_project">
-                            <button type="submit">Create T</button>
+                            <button class="btn-psumm" type="submit">Create T</button>
                         </form>
                     </div>
                     <% if(user.id_role >=2){ %>
@@ -53,9 +53,10 @@
                             <p>***The user is the only that create this option</p>
                             <div class="cont-frame-ad-task-ct">
                                 <h3>New Task Status</h3>
-                                <a href="/project/create-task-status">Create TS</a>
+                                <a class="btn-psumm" href="/project/create-task-status">Create TS</a>
                             </div>
                     <% } %>
+                    
                 </div>
             </div>
             

@@ -93,7 +93,8 @@ class ProyectoController{
             const idP = ktr.id_user
             const{project_action,id_project}= req.body
             if(project_action ==0){
-                pool.query(`SELECT * FROM users JOIN users_project ON users.id_user = users_project.id_user WHERE id_role=3 AND users_project.id_project NOT IN (?);`,[id_project],(error,rows)=>{
+                //pool.query(`SELECT * FROM users WHERE NOT EXISTS(SELECT NULL FROM users_project WHERE users.id_user = users_project.id_user) AND users.id_role=3`,[id_project],(error,rows)=>{
+                pool.query(`SELECT * FROM users WHERE id_role = 3`,[id_project],(error,rows)=>{
                     if(error){
                         console.log(error)
                     }else{
@@ -211,12 +212,20 @@ class ProyectoController{
     addOrRemoveTeam(req,res){
         try {
             const{option_tw,id_project,id_user}=req.body
-            if(option_tw ==0){
-                pool.query(`INSERT INTO users_project(id_user,id_project) VALUES(?,?)`,[id_user,id_project],(error,rows)=>{
+            if(option_tw==0){
+                pool.query(`SELECT * FROM users JOIN users_project ON users.id_user = users_project.id_user WHERE users.id_user= ? AND users_project.id_project = ?`,[id_user,id_project],(error,rows)=>{
                     if(error){
                         console.log(error)
-                    }else{
+                    }else if(rows.length >=1){
                         res.redirect('/project')
+                    }else{
+                        pool.query(`INSERT INTO users_project(id_user,id_project) VALUES(?,?)`,[id_user,id_project],(error,list)=>{
+                            if(error){
+                                console.log(error)
+                            }else{
+                                res.redirect('/project')
+                            }
+                        })
                     }
                 })
             }
@@ -229,6 +238,21 @@ class ProyectoController{
                     }
                 })
             }
+        } catch (error) {
+            console.log('fatal error:' + error)
+        }
+    }
+
+    removeTeam(req,res){
+        try {
+            const {option_tw,id_user}=req.body
+            pool.query(`DELETE FROM users_project WHERE id_user=?`,[id_user],(error,rows)=>{
+                if(error){
+                    console.log(error)
+                }else{
+                    res.redirect('/project')
+                }
+            })
         } catch (error) {
             console.log('fatal error:' + error)
         }

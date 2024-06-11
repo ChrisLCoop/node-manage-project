@@ -1,17 +1,21 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
-                <h2>New Task </h2>
+                <h2 class="tt-add-task">New Task </h2>
                 <div class="content-frame-np">
-                  <form action="/project/new-task" method="POST">
-                    <input type="text" placeholder="Name Task" name="nameTask"><br>
-                    <textarea name="description" id=""></textarea><br>
+                  <form class="form-add-tsk" action="/project/new-task" method="POST">
+                    <input type="text" placeholder="Name Task" name="nameTask" required>
+                    <label class="label-addtsk" for="">Description Task</label>
+                    <textarea name="description" id="" required></textarea>
+                    <label class="label-addtsk" for="">Status Task</label>
                     <select name="id_task_status" selected value>
                       <% data.forEach(function(row) { %>
                       <option value="<%= row.id_task_status %>"><%= row.name_task_status %></option>
                       <% }); %>
-                    </select><br><br>
+                    </select>
                     <input type="hidden" value="<%= idProject %>" name="id_project">
-                    <button type="submit">create</button>
+                    <div class="ctn-btn-dd">
+                      <button class="btn-add-task" type="submit">create</button>
+                    </div>
                   </form>
                 </div>
             </div>

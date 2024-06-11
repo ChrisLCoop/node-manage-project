@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const bcryptjs = require('bcryptjs')
 const pool = require('../../database/conection.js')
 const {promisify} = require('util')
-const { error } = require('console')
 require('dotenv').config()
 
 exports.register = async(req,res)=>{
@@ -27,7 +26,6 @@ exports.register = async(req,res)=>{
 exports.login = async (req,res)=>{
     try {
         const {user,pass}= req.body
-        console.log(user,pass)
         pool.query(`SELECT * FROM users WHERE email_user = ?`,[user], async(error,rows)=>{
             if(rows.length <=0 || ! (await bcryptjs.compare(pass, rows[0].password_user))){
                 console.log('email user or password is incorrect')

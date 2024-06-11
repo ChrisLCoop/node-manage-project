@@ -1,54 +1,79 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
                 <h2>Report</h2>
-                <h3>Lista de reportes</h3>
+                <h3>Report List</h3>
                 <div class="control-project-fr">
                     <table class="table-date">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Proyecto</th>
-                                <th scope="col">Tareas</th>
-                                <th scope="col">Tareas Completadas</th>
-                                <th scope="col">Total Horas</th>
-                                <th scope="col">Progreso</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">*</th>
+                                <th scope="col">#id</th>
+                                <th scope="col">Project Name</th>
+                                <th scope="col">Project Description</th>
+                                <th scope="col">Project Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <% data.forEach(function(row) { %>
+                                <tr>
+                                    <th><%= row.id_project %></th>
+                                    <td><%= row.name_project %></td>
+                                    <td><%= row.description_project %></td>
+                                    <td><%= row.name_project_status %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table><br>
+                    <table class="table-date">
+                        <thead>
                             <tr>
-                                <th>1</th>
-                                <td>Proyecto 1</td>
-                                <td>5</td>
-                                <td>3</td>
-                                <td>80Hr/s</td>
-                                <td>barrita</td>
-                                <td>pendiente</td>
-                                <td><a href="">imprimir</a></td>
+                                <th scope="col">#id-P</th>
+                                <th scope="col">Project Name</th>
+                                <th scope="col">#id-T</th>
+                                <th scope="col">Task Name</th>
+                                <th scope="col">Task Description</th>
+                                <th scope="col">Task Status</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            <% dato.forEach(function(list) { %>
+                                <tr>
+                                    <th><%= list.id_project %></th>
+                                    <th><%= list.name_project %></th>
+                                    <td><%= list.id_task %></td>
+                                    <td><%= list.name_task %></td>
+                                    <td><%= list.description_task %></td>
+                                    <td><%= list.name_task_status %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="cont-regin-dash">
+                <div class="content-result-data-dash">
+                    <h2 class="title-i-p-g">Info Project Progress</h2>
+                    <table class="table-date">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name Project</th>
+                                <th scope="col">Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% cont.forEach(function(std) { %>
+                                <tr>
+                                    <th><%= std.name_project %></th>
+                                    <% if(std.TOTAL_TASK == 0){ %>
+                                        <td>No tiene ninguna tarea</td>
+                                    <% } else { %>
+                                        <td><progress max="100" value="<%= ((std.TASK_COMPLETE * 100)/ std.TOTAL_TASK ) %>"></progress><%= (((std.TASK_COMPLETE * 100)/ std.TOTAL_TASK )).toFixed(1) %>%</td>
+                                    <% } %>
+                                </tr>
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="content-gen-dash-b">
-                <div class="cont-status-count-project">
-                    <div class="frame-info-ddt">
-                        <h3>Total Tareas</h3>
-                        <span>21</span>
-                    </div>
-                    <div class="frame-info-ddt">
-                        <img src="" alt="">
-                    </div>
-                </div>
-                <div class="cont-status-count-project">
-                    <div class="frame-info-ddt">
-                        <h3>Total Tareas Completadas</h3>
-                        <span>50</span>
-                    </div>
-                    <div class="frame-info-ddt">
-                        <img src="" alt="">
-                    </div>
-                </div>
-            </div>
+            
 <%- include('includes/footer') %>

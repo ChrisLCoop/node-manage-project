@@ -1,17 +1,24 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
-                <h2>Add Task Progress</h2>
+                <h1 class="tt-add-task">Add Task Progress</h1>
                 <div class="content-frame-np">
-                  <form action="/task/new-task-progress" method="POST">
-                    <input type="text" placeholder="Name Task " name="nameTaskPro"><br>
-                    <input type="date" placeholder="Date Initial" name="dateInitial"><br>
-                    <input type="time" placeholder="Hour Initial" name="timeInitial"><br>
-                    <input type="date" placeholder="Date Finish" name="dateFinish"><br>
-                    <input type="time" placeholder="Hour Finish" name="timeFinish"><br>
-                    <textarea name="description" id=""></textarea><br>
+                  <form class="form-add-tsk" action="/task/new-task-progress" method="POST">
+                    <input type="text" placeholder="Name Task " name="nameTaskPro" required>
+                    <label class="label-addtsk" for="">Date Initial</label>
+                    <input type="date" placeholder="Date Initial" name="dateInitial" required>
+                    <label class="label-addtsk" for="">Time Initial</label>
+                    <input type="time" placeholder="Hour Initial" name="timeInitial" required>
+                    <label class="label-addtsk" for="">Date Finish</label>
+                    <input type="date" placeholder="Date Finish" name="dateFinish" required>
+                    <label class="label-addtsk" for="">Date Finish</label>
+                    <input type="time" placeholder="Hour Finish" name="timeFinish" required>
+                    <label class="label-addtsk" for="">Describe your progress</label>
+                    <textarea name="description" id="" required></textarea>
                     <input type="hidden" value="<%= user.id_user %>" name="id_user">
                     <input type="hidden" value="<%= idTask %>" name="id_task">
-                    <button type="submit">create</button>
+                    <div class="ctn-btn-dd">
+                      <button class="btn-add-task" type="submit">create</button>
+                    </div>
                   </form>
                 </div>
             </div>

@@ -1,17 +1,23 @@
 <%-  include('includes/header') %>
             <div class="content-gen-dash">
-                <h2>Edit Project</h2>
+                <h2 class="tt-add-task">Edit Project</h2>
                 <div class="content-frame-np">
-                  <form action="/project/update-project" method="POST">
+                  <form class="form-add-tsk" action="/project/update-project" method="POST">
                     <% data.forEach(function(row) { %>
-                    <input type="text" value="<%= row.name_project %>" placeholder="Name Project" name="nameProject"><br>
-                    <input type="date" value="<%= row.date_initial_project %>" placeholder="Date Initial" name="dateInitial"><br>
-                    <input type="date" value="<%= row.date_finish_project %>" placeholder="Date Finish" name="dateFinish"><br>
-                    <textarea name="description" id=""><%= row.description_project %></textarea><br>
-                    <input type="text" value="<%= row.name_project_status %>" placeholder="Date Finish" disabled><br>
+                    <input type="text" value="<%= row.name_project %>" placeholder="Name Project" name="nameProject">
+                    <label class="label-addtsk" for="">Initial Date</label>
+                    <input type="date" value="<%= row.date_initial_project %>" name="dateInitial">
+                    <label class="label-addtsk" for="">Finished Date</label>
+                    <input type="date" value="<%= row.date_finish_project %>" name="dateFinish">
+                    <label class="label-addtsk" for="">Description</label>
+                    <textarea name="description" id=""><%= row.description_project %></textarea>
+                    <label class="label-addtsk" for="">Status Project</label>
+                    <input type="text" value="<%= row.name_project_status %>" placeholder="Date Finish" disabled>
                     <input type="hidden" value="<%= row.id_project %>" name="id_project">
                     <% }); %>
-                    <button type="submit">Update</button>
+                    <div class="ctn-btn-dd">
+                      <button class="btn-add-task" type="submit">create</button>
+                    </div>
                   </form>
                 </div>
             </div>
